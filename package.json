@@ -1,5 +1,5 @@
 {
-  "name": "@justkd/template-ts-npm-package",
+  "name": "@justkd/uuid.manager",
   "author": "Cadence Holmes, @justkd",
   "version": "0.0.1",
   "license": "MIT",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/justKD/template-ts-npm-package"
+    "url": "https://github.com/justkd/uuid.manager"
   },
   "main": "lib/index",
   "types": "lib/index",

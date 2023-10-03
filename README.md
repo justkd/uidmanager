@@ -1,8 +1,8 @@
 # template-ts-npm-package
 
-![CircleCI](https://img.shields.io/circleci/build/gh/justKD/template-ts-npm-package/master?token=5d76eb51f1f5547eb2c610645c07272cbb149f58&style=for-the-badge&logo=circleci)
+![CircleCI](https://img.shields.io/circleci/build/gh/justkd/template-ts-npm-package/master?token=5d76eb51f1f5547eb2c610645c07272cbb149f58&style=for-the-badge&logo=circleci)
 
-<https://github.com/justKD/template-ts-npm-package>
+<https://github.com/justkd/template-ts-npm-package>
 
 ## Use
 
@@ -16,7 +16,7 @@
 
 ### Fields you may need to update in `package.json`
 
-```(json)
+```
 {
   "name",
   "author",
