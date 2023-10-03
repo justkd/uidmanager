@@ -1,0 +1,172 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@justkd/template-ts-npm-package</title><meta name="description" content="Documentation for @justkd/template-ts-npm-package"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/search.js" id="tsd-search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base=".">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@justkd/template-ts-npm-package</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-content">
+<div class="tsd-page-title">
+<h2>@justkd/template-ts-npm-package</h2></div>
+<div class="tsd-panel tsd-typography"><a id="md:template-ts-npm-package" class="tsd-anchor"></a><h1><a href="#md:template-ts-npm-package">template-ts-npm-package</a></h1><p><img src="https://img.shields.io/circleci/build/gh/justKD/template-ts-npm-package/master?token=5d76eb51f1f5547eb2c610645c07272cbb149f58&style=for-the-badge&logo=circleci" alt="CircleCI"></p>
+<p><a href="https://github.com/justKD/template-ts-npm-package">https://github.com/justKD/template-ts-npm-package</a></p>
+<a id="md:use" class="tsd-anchor"></a><h2><a href="#md:use">Use</a></h2><ul>
+<li>Clone the template to create a new GitHub repo.</li>
+<li>Configure your project. Instructions are below.</li>
+<li><code>cd</code> into the project directory and run <code>nvm use</code> to switch to the configured <code>node</code> version found in <code>.nvmrc</code>.</li>
+<li><code>yarn</code> or <code>npm i</code> to install node modules.</li>
+<li>Start building your module in <code>src</code>.</li>
+</ul>
+<a id="md:setup-your-package-config" class="tsd-anchor"></a><h2><a href="#md:setup-your-package-config">Setup your package config</a></h2><a id="md:fields-you-may-need-to-update-in-packagejson" class="tsd-anchor"></a><h3><a href="#md:fields-you-may-need-to-update-in-packagejson">Fields you may need to update in <code>package.json</code></a></h3><pre><code class="language-(json)">{
+  &quot;name&quot;,
+  &quot;author&quot;,
+  &quot;version&quot;,
+  &quot;license&quot;,
+  &quot;description&quot;,
+  &quot;keywords&quot;,
+  &quot;repository: {
+    &quot;url&quot;
+  }
+}
+</code><button>Copy</button></pre>
+<a id="md:other-files-that-may-need-attention" class="tsd-anchor"></a><h3><a href="#md:other-files-that-may-need-attention">Other files that may need attention</a></h3><ul>
+<li><code>.nvmrc</code><ul>
+<li>Set to the target <code>node</code> version your project will use.</li>
+</ul>
+</li>
+<li><code>CONTRIBUTING.md</code></li>
+<li><code>LICENSE</code><ul>
+<li>Name and date for copyright notice.</li>
+<li>Or replace with new license matching type you put in <code>package.json</code>.</li>
+</ul>
+</li>
+<li><code>README.md</code><ul>
+<li>Replace this sucker with your own project readme.</li>
+<li>Update CLCI badge link:<br><code>https://img.shields.io/circleci/build/gh/GH_USERNAME/REPO_NAME/BRANCH_NAME?token=API_TOKEN&amp;style=for-the-badge&amp;logo=circleci</code><table>
+<thead>
+<tr>
+<th align="left">Script</th>
+<th align="left">Example</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>GH_USERNAME</em></td>
+<td align="left">eg. justKD</td>
+<td align="left">Your GitHub username.</td>
+</tr>
+<tr>
+<td align="left"><em>REPO_NAME</em></td>
+<td align="left">eg. template-ts-npm-package</td>
+<td align="left">The name you gave your repo on GitHub.</td>
+</tr>
+<tr>
+<td align="left"><em>BRANCH_NAME</em></td>
+<td align="left">eg. master</td>
+<td align="left">The name of the branch being targeted.</td>
+</tr>
+<tr>
+<td align="left"><em>API_TOKEN</em></td>
+<td align="left">eg. blahBlah91blah12081238951Blah</td>
+<td align="left">The individual project <code>Status</code> level API token from CLCI.</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+</ul>
+<a id="md:included-package-scripts" class="tsd-anchor"></a><h2><a href="#md:included-package-scripts">Included package scripts</a></h2><table>
+<thead>
+<tr>
+<th align="left">Script</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>npm run test</code></td>
+<td align="left">Run tests on demand.</td>
+</tr>
+<tr>
+<td align="left"><code>npm run watch</code></td>
+<td align="left">Run tests on change.</td>
+</tr>
+<tr>
+<td align="left"><code>npm run build</code></td>
+<td align="left">Shortcut to run both <code>build:lib</code> and <code>build:docs</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>npm run build:lib</code></td>
+<td align="left">Build module (replaces files in <code>./lib</code>).</td>
+</tr>
+<tr>
+<td align="left"><code>npm run build:docs</code></td>
+<td align="left">Build the documentation using <a href="http://typedoc.org">TypeDoc</a> and <a href="https://github.com/tgreyuk/typedoc-plugin-markdown/tree/master/packages/typedoc-plugin-markdown">TypeDoc Markdown</a> (replaces files in <code>./docs</code>).</td>
+</tr>
+<tr>
+<td align="left"><code>npm run publish</code></td>
+<td align="left">I know. Just let me be thorough ok? Publish the contents of the <code>./lib</code> folder and <code>./README.md</code> to NPM.</td>
+</tr>
+</tbody></table>
+<a id="md:optional-setting-up-github-pages-and-circleci" class="tsd-anchor"></a><h2><a href="#md:optional-setting-up-github-pages-and-circleci">(optional) Setting up GitHub Pages and CircleCI</a></h2><a id="md:github-pages" class="tsd-anchor"></a><h3><a href="#md:github-pages">GitHub Pages</a></h3><p>Set up a GitHub Pages site for your package as a <em>project site</em> with the following steps:</p>
+<ol>
+<li>Follow the instructions in the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">GitHub Pages Docs</a> to set up Pages on your GitHub account or organisation if not already configured.</li>
+<li>Go to your repository for this package on GitHub and click <code>Settings</code></li>
+<li>Click <code>Pages</code></li>
+<li>Configure the branch as <code>main</code> (or <code>master</code>) and the directory to <code>./docs</code></li>
+<li>Configure the remaining settings as per your own preferences</li>
+</ol>
+<a id="md:circleci" class="tsd-anchor"></a><h3><a href="#md:circleci">CircleCI</a></h3><p>A basic <a href="https://circleci.com">CircleCI</a> config is included in this template.</p>
+<ol>
+<li>Login to <a href="https://circleci.com">CircleCI</a> with GitHub</li>
+<li>Click &quot;Projects&quot;</li>
+<li>Click &quot;Set up project&quot; for this repository and follow the instructions</li>
+</ol>
+<p>Also consider setting up branch protection and requiring passing checks from CircleCI for pull requests.</p>
+</div></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)" id="icon-chevronDown"></path></svg>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg>On This Page</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li>
+<ul>
+<li><a href="#md:template-ts-npm-package"><span>template-<wbr/>ts-<wbr/>npm-<wbr/>package</span></a></li>
+<li>
+<ul>
+<li><a href="#md:use"><span>Use</span></a></li>
+<li><a href="#md:setup-your-package-config"><span>Setup your package config</span></a></li>
+<li>
+<ul>
+<li><a href="#md:fields-you-may-need-to-update-in-packagejson"><span>Fields you may need to update in package.json</span></a></li>
+<li><a href="#md:other-files-that-may-need-attention"><span>Other files that may need attention</span></a></li></ul></li>
+<li><a href="#md:included-package-scripts"><span>Included package scripts</span></a></li>
+<li><a href="#md:optional-setting-up-github-pages-and-circleci"><span>(optional) <wbr/>Setting up <wbr/>Git<wbr/>Hub <wbr/>Pages and <wbr/>CircleCI</span></a></li>
+<li>
+<ul>
+<li><a href="#md:github-pages"><span>Git<wbr/>Hub <wbr/>Pages</span></a></li>
+<li><a href="#md:circleci"><span>CircleCI</span></a></li></ul></li></ul></li></ul></li></ul></div></details></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="modules.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>@justkd/template-<wbr/>ts-<wbr/>npm-<wbr/>package</span></a>
+<ul class="tsd-small-nested-navigation">
+<li><a href="variables/hello.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-32"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-variable)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.106 16L8.85 7.24H9.966L11.454 13.192C11.558 13.608 11.646 13.996 11.718 14.356C11.79 14.708 11.842 14.976 11.874 15.16C11.906 14.976 11.954 14.708 12.018 14.356C12.09 13.996 12.178 13.608 12.282 13.192L13.758 7.24H14.85L12.582 16H11.106Z" fill="var(--color-text)"></path></g></svg><span>hello</span></a></li></ul></nav></div></div></div>
+<div class="tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div></body></html>

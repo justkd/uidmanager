@@ -1,0 +1,63 @@
+{
+  "name": "@justkd/template-ts-npm-package",
+  "author": "Cadence Holmes, @justkd",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "GitHub template repo for building an NPM package.",
+  "keywords": [
+    "template",
+    "npm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/justKD/template-ts-npm-package"
+  },
+  "main": "lib/index",
+  "types": "lib/index",
+  "files": [
+    "lib",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "test": "npx mocha",
+    "watch": "npx mocha -w",
+    "build": "npm run build:lib && npm run build:docs",
+    "build:lib": "npx tsc -p .",
+    "build:docs": "npx typedoc --out docs src/index.js --cleanOutputDir",
+    "publish": "npm publish"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --cache --fix"
+    ]
+  },
+  "mocha": {
+    "extension": [
+      "ts"
+    ],
+    "watch-files": [
+      "src/**/*.ts",
+      "test/**/*.ts"
+    ],
+    "require": "ts-node/register"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "chai": "^4.3.7",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "lint-staged": "^13.2.3",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1",
+    "typedoc": "^0.24.8",
+    "typedoc-plugin-markdown": "^3.15.3",
+    "typescript": "^5.1.6"
+  }
+}
