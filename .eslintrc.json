@@ -19,6 +19,8 @@
   },
   "ignorePatterns": ["*.test.*", "*.spec.*", "lib/*", "docs/*"],
   "rules": {
+    "quotes": ["warn", "double"],
+    "@typescript-eslint/quotes": ["warn", "double"],
     "no-console": "off",
     "strict": ["error", "global"],
     "curly": "warn",
