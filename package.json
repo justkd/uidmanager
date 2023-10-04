@@ -1,5 +1,5 @@
 {
-  "name": "@justkd/uuid.manager",
+  "name": "@justkd/uid.manager",
   "author": "Cadence Holmes, @justkd",
   "version": "0.0.1",
   "license": "MIT",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/justkd/uuid.manager"
+    "url": "https://github.com/justkd/uid.manager"
   },
   "main": "lib/index",
   "types": "lib/index",

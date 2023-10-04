@@ -1,5 +1,5 @@
-# @justkd/uuid.manager
+# @justkd/uid.manager
 
-![CircleCI](https://img.shields.io/circleci/build/gh/justkd/uuid.manager/master?token=5d76eb51f1f5547eb2c610645c07272cbb149f58&style=for-the-badge&logo=circleci)
+![CircleCI](https://img.shields.io/circleci/build/gh/justkd/uid.manager/master?token=ac29275fdae216ac82c83ef4762f07de95764e90&style=for-the-badge&logo=circleci)
 
-<https://github.com/justkd/uuid.manager>
+<https://github.com/justkd/uid.manager>
