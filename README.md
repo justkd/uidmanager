@@ -1,5 +1,9 @@
 # @justkd/uid.manager
 
-![CircleCI](https://img.shields.io/circleci/build/gh/justkd/uid.manager/master?token=ac29275fdae216ac82c83ef4762f07de95764e90&style=for-the-badge&logo=circleci)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/justkd/UIDManager/tree/master.svg?style=svg&circle-token=2edcfec5c13eaf6d951a8f2939b220cdca74644c)](https://dl.circleci.com/status-badge/redirect/gh/justkd/UIDManager/tree/master)
 
-<https://github.com/justkd/uid.manager>
+<https://github.com/justkd/UIDManager>
+
+## TODO
+
+- add a readme
