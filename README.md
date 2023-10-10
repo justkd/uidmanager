@@ -1,6 +1,6 @@
 # @justkd/UIDManager
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/justkd/UIDManager/tree/master.svg?style=svg&circle-token=2edcfec5c13eaf6d951a8f2939b220cdca74644c)](https://dl.circleci.com/status-badge/redirect/gh/justkd/UIDManager/tree/master)
+![CircleCI](https://img.shields.io/circleci/build/gh/justkd/UIDManager/master?token=2edcfec5c13eaf6d951a8f2939b220cdca74644c&style=for-the-badge&logo=circleci)
 
 <https://github.com/justkd/UIDManager>
 
