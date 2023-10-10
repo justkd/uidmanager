@@ -26,57 +26,57 @@
 export const uid = (
   uids?: string[],
 ): {
-    /**
-     * Determine which pseudo-random number generator to use, generate four random
-     * values, and coerce the output to a RFC4122 version 4 compliant unique identifier.
-     * Checks with stored UIDs to absolutely ensure the value is unique.
-     * @returns {string} RFC4122 version 4 compliant unique identifier as alpha-numeric `string`.
-     */
-    generate: () => string;
+  /**
+   * Determine which pseudo-random number generator to use, generate four random
+   * values, and coerce the output to a RFC4122 version 4 compliant unique identifier.
+   * Checks with stored UIDs to absolutely ensure the value is unique.
+   * @returns {string} RFC4122 version 4 compliant unique identifier as alpha-numeric `string`.
+   */
+  generate: () => string;
 
-    /**
-     * Retrieve the array of previously generated UIDs.
-     * @return {string[]} `string[]`
-     */
-    getExisting: () => string[];
+  /**
+   * Retrieve the array of previously generated UIDs.
+   * @return {string[]} `string[]`
+   */
+  getExisting: () => string[];
 
-    /**
-     * Set the array of previously generated UIDs. Checks the array for validity and only
-     * sets the internal store if the check passes. Returns `true` on success and `false`
-     * if failed.
-     * @param {string[]} ids - Array of existing UIDs.
-     * @returns {boolean} Returns `true` on success.
-     */
-    setExisting: (ids: string[]) => void;
+  /**
+   * Set the array of previously generated UIDs. Checks the array for validity and only
+   * sets the internal store if the check passes. Returns `true` on success and `false`
+   * if failed.
+   * @param {string[]} ids - Array of existing UIDs.
+   * @returns {boolean} Returns `true` on success.
+   */
+  setExisting: (ids: string[]) => void;
 
-    /**
-     * Validate as RFC4122 version 4 compliant unique identifier.
-     * @param {string | string[]} uids - Either a single string or array of strings to test.
-     * @returns {string[]} Returns `string[]` containing all valid strings.
-     *
-     * @example `Single valid string`
-     * const uid = uid.generate();
-     * const validated = uid.validate(uid); // validated === [uid]
-     * const isValid = validated.length > 0; // true
-     *
-     * @example `Array of valid strings`
-     * const uids = [...new Array(5)].map((_) => uid.generate());
-     * const validated = uid.validate(uids); // validated == uids
-     * const isValid = validated.length === uids.length; // true
-     *
-     * @example `Array of invalid strings`
-     * const uids = ['1', '2', '3', '4'];
-     * const validated = uid.validate(uids); // validated != uids
-     * const isValid = validated.length === uids.length; // false
-     *
-     * @example `Array of mixed validity strings`
-     * const uid = 'AA97B177-9383-4934-8543-0F91A7A02836';
-     * const uids = ['invalid-uid', uid];
-     * const validated = uid.validate(uids); // validated == [uid]
-     * const isValid = validated.length === uids.length; // false
-     */
-    validate: (ids: string | string[]) => string[];
-  } => {
+  /**
+   * Validate as RFC4122 version 4 compliant unique identifier.
+   * @param {string | string[]} uids - Either a single string or array of strings to test.
+   * @returns {string[]} Returns `string[]` containing all valid strings.
+   *
+   * @example `Single valid string`
+   * const uid = uid.generate();
+   * const validated = uid.validate(uid); // validated === [uid]
+   * const isValid = validated.length > 0; // true
+   *
+   * @example `Array of valid strings`
+   * const uids = [...new Array(5)].map((_) => uid.generate());
+   * const validated = uid.validate(uids); // validated == uids
+   * const isValid = validated.length === uids.length; // true
+   *
+   * @example `Array of invalid strings`
+   * const uids = ['1', '2', '3', '4'];
+   * const validated = uid.validate(uids); // validated != uids
+   * const isValid = validated.length === uids.length; // false
+   *
+   * @example `Array of mixed validity strings`
+   * const uid = 'AA97B177-9383-4934-8543-0F91A7A02836';
+   * const uids = ['invalid-uid', uid];
+   * const validated = uid.validate(uids); // validated == [uid]
+   * const isValid = validated.length === uids.length; // false
+   */
+  validate: (ids: null | string | (string | null)[]) => string[];
+} => {
   let generated = uids || [];
 
   /**
@@ -127,15 +127,25 @@ export const uid = (
    * @returns {[number, number, number, number]}
    */
   const getRandomValues: () => [number, number, number, number] = (() => {
-    const { crypto } = window || {};
-    return crypto?.getRandomValues
-      ? () => Array.from(crypto.getRandomValues(new Uint32Array(4))) as [
-        number,
-        number,
-        number,
-        number,
-      ]
-      : () => {
+    try {
+      const { crypto } = window || {};
+      return crypto?.getRandomValues
+        ? () => {
+            const values = crypto.getRandomValues(new Uint32Array(4));
+            return Array.from(values) as [number, number, number, number];
+          }
+        : () => {
+            const rand = () => (Math.random() * 0x100000000) >>> 0;
+            return [rand(), rand(), rand(), rand()] as [
+              number,
+              number,
+              number,
+              number,
+            ];
+          };
+    } catch (e) {
+      console.log("Window/Crypto error : Falling back to Math.Random", e);
+      return () => {
         const rand = () => (Math.random() * 0x100000000) >>> 0;
         return [rand(), rand(), rand(), rand()] as [
           number,
@@ -144,20 +154,23 @@ export const uid = (
           number,
         ];
       };
+    }
   })();
 
-  const validator = (ids: string | string[]): string[] => {
-    const re = /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
+  const validator = (ids: null | string | (string | null)[]): string[] => {
+    if (!ids) return [];
+    const re =
+      /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
     const arr = Array.isArray(ids) ? ids : [ids];
-    return arr.filter((id) => re.test(id));
+    return arr.filter((id) => id && re.test(id)) as string[];
   };
 
   return {
-    getExisting: (): string[] => generated,
+    getExisting: (): string[] => [...generated],
     setExisting: (ids: string[]): boolean => {
       const validated = validator(ids);
       if (validated.length === ids.length) {
-        generated = uids || [];
+        generated = [...validated];
         return true;
       }
       return false;
