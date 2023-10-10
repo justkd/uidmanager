@@ -21,6 +21,8 @@
   "rules": {
     "quotes": ["warn", "double"],
     "@typescript-eslint/quotes": ["warn", "double"],
+    "@typescript-eslint/indent": "off",
+    "operator-linebreak": "off",
     "no-console": "off",
     "strict": ["error", "global"],
     "curly": "warn",

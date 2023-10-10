@@ -21,11 +21,11 @@
     "package.json"
   ],
   "scripts": {
-    "test": "npx mocha",
-    "watch": "npx mocha -w",
+    "test": "npx mocha --require mocha-dom",
+    "watch": "npx mocha -w --require mocha-dom",
     "build": "npm run build:lib && npm run build:docs",
     "build:lib": "npx tsc -p .",
-    "build:docs": "npx typedoc --out docs src/index.js --cleanOutputDir",
+    "build:docs": "npx typedoc --out docs src/index.ts --cleanOutputDir",
     "publish": "npm publish"
   },
   "lint-staged": {
@@ -53,8 +53,10 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.25.2",
+    "jsdom": "^22.1.0",
     "lint-staged": "^13.2.3",
     "mocha": "^10.2.0",
+    "mocha-dom": "^1.0.0",
     "ts-node": "^10.9.1",
     "typedoc": "^0.24.8",
     "typedoc-plugin-markdown": "^3.15.3",
