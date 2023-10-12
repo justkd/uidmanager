@@ -2,7 +2,7 @@
 
 ![CircleCI](https://img.shields.io/circleci/build/gh/justkd/uidmanager/master?token=2edcfec5c13eaf6d951a8f2939b220cdca74644c&style=for-the-badge&logo=circleci)
 
-Guarantees the generated identifier is unique compared to all other previously stored keys. Export and restore the map entities to facilitate persistence. Validates external UIDs for compliance and uniqueness. 
+Generate RFC4122 version 4 compliant unique identifiers and associate them with entities in a `map`. Guarantees the generated identifier is unique compared to all other previously stored keys. Export and restore the map entities to facilitate persistence. Validates external UIDs for compliance and uniqueness.  
 
 ## Install
 
