@@ -17,6 +17,10 @@ const onError = (name: string, e: unknown, msg?: string) => {
   console.groupEnd();
 };
 
+const defaultMsg =
+  "All values must be valid RFC4122 version 4 " +
+  "compliant unique identifiers.";
+
 /**
  * Generate RFC4122 version 4 compliant unique identifiers
  * and associate them with entities in a `map`.
@@ -55,21 +59,17 @@ export const UIDManager = () => {
       try {
         return generator.validate(uids);
       } catch (e) {
-        onError(
-          "validate",
-          e,
-          "All values must be valid RFC4122 version 4 compliant unique identifiers.",
-        );
+        onError("validate", e, defaultMsg);
         return null;
       }
     },
 
     /**
-     * Generate a unique identifier and associate it with the `target` entity.
-     * Internally, these associations are stored in a `new Map()`. The target entity
-     * is set as the key, and the UID string is set as the value. If the target entity
-     * already exists in the map, the existing association is deleted and a new UID is
-     * mapped to that entity.
+     * Generate a unique identifier and associate it with the provided key.
+     * Internally, these associations are stored in a `new Map()`. The target
+     * entity is set as the key, and the UID string is set as the value. If
+     * the target entity already exists in the map, the existing association
+     * is deleted and a new UID is mapped to that entity.
      * @param {any} key
      * `any` entity to be mapped to a unique identifier.
      * Throws if the key is `undefined`, `null`, or `NaN`.
@@ -97,7 +97,7 @@ export const UIDManager = () => {
      * @param {any} key
      * The entity reference.
      * @returns {string|undefined}
-     * Returns the UID `string` or `undefined` if a value is not found for the given key.
+     * Returns the UID `string` or `undefined` if a value is not found.
      */
     getUIDFor: (key: any): string | undefined => map.get(key) ?? null,
 
@@ -106,8 +106,8 @@ export const UIDManager = () => {
      * @param {string} uid
      * The UID string.
      * @returns {any}
-     * Returns the associated key or `undefined` if a matching value is not found.
-     * Returns `null` on error.
+     * Returns the associated key or `undefined` if a matching
+     * value is not found. Returns `null` on error.
      */
     getKeyFor: (uid: string): any => {
       try {
@@ -122,14 +122,15 @@ export const UIDManager = () => {
     },
 
     /**
-     * Check if there is an existing UID for the target object.
-     * @param {any} key - The entity reference.
+     * Check if there is an existing UID for the target key.
+     * @param {any} key
+     * The entity reference.
      * @returns {boolean}
      */
     hasUIDFor: (key: any): boolean => map.has(key),
 
     /**
-     * Check if there is an existing UID for the target object.
+     * Check if there is an existing key for the target UID.
      * @param {string} uid - The UID string.
      * @returns {boolean}
      */
@@ -172,28 +173,21 @@ export const UIDManager = () => {
         const bank: string[] = [];
         const validated = $entries.every(([k, v], i) => {
           if (bank.includes(v)) {
-            onError(
-              "restore",
-              new Error(`Invalid entry [${k}, ${v}] at index ${i}`),
-              `Duplicate UID found: ${v}.`,
-            );
+            const err = `Invalid entry [${k}, ${v}] at index ${i}`;
+            const msg = `Duplicate UID found: ${v}.`;
+            onError("restore", new Error(err), msg);
             return false;
           }
           bank.push(v);
           if (!generator.validate(v)) {
-            onError(
-              "restore",
-              new Error(`Invalid entry [${k}, ${v}] at index ${i}`),
-              "All values must be valid RFC4122 version 4 compliant unique identifiers.",
-            );
+            const err = `Invalid entry [${k}, ${v}] at index ${i}`;
+            onError("restore", new Error(err), defaultMsg);
             return false;
           }
           if (k === undefined || k === null || Number.isNaN(k)) {
-            onError(
-              "restore",
-              new Error(`Invalid entry [${k}, ${v}] at index ${i}`),
-              "Keys must not be null, undefined, or NaN.",
-            );
+            const err = `Invalid entry [${k}, ${v}] at index ${i}`;
+            const msg = "Keys must not be null, undefined, or NaN.";
+            onError("restore", new Error(err), msg);
             return false;
           }
           return true;
@@ -227,30 +221,23 @@ export const UIDManager = () => {
       try {
         const [k, v] = [entry[0], entry[1].toLowerCase()];
         if (!generator.validate(v)) {
-          onError(
-            "set",
-            new Error(`Invalid entry [${k}, ${v}]`),
-            "All values must be valid RFC4122 version 4 compliant unique identifiers.",
-          );
+          const err = `Invalid entry [${k}, ${v}]`;
+          onError("set", new Error(err), defaultMsg);
           return false;
         }
         if (k === undefined || k === null || Number.isNaN(k)) {
-          onError(
-            "set",
-            new Error(`Invalid entry [${k}, ${v}]`),
-            "Keys must not be null, undefined, or NaN.",
-          );
+          const err = `Invalid entry [${k}, ${v}]`;
+          const msg = "Keys must not be null, undefined, or NaN.";
+          onError("set", new Error(err), msg);
           return false;
         }
         if (
           [...map.values()].includes(v) ||
           generator.getExisting().includes(v)
         ) {
-          onError(
-            "set",
-            new Error(`Invalid entry [${k}, ${v}]`),
-            "UID already exists.",
-          );
+          const err = `Invalid entry [${k}, ${v}]`;
+          const msg = "UID already exists.";
+          onError("set", new Error(err), msg);
           return false;
         }
         if (map.has(k)) map.delete(k);
@@ -285,7 +272,7 @@ export const UIDManager = () => {
     },
 
     /**
-     * Delete a UID association for a given target.
+     * Delete a UID association for a given key.
      * @param {any} key
      * The key entity reference.
      * @returns {boolean|null}
@@ -319,3 +306,5 @@ export const UIDManager = () => {
 
   return self;
 };
+
+export type UIDManagerInterface = ReturnType<typeof UIDManager>;

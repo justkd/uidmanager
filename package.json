@@ -1,16 +1,31 @@
 {
   "name": "@justkd/UIDManager",
   "author": "Cadence Holmes, @justkd",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "license": "MIT",
   "description": "",
   "keywords": [
-    "template",
+    "id",
+    "uid",
+    "uuid",
+    "unique",
+    "identifier",
+    "manage",
+    "manager",
+    "storage",
+    "validator",
+    "validate",
+    "validation",
+    "generate",
+    "generator",
+    "map",
+    "mapper",
+    "mapped",
     "npm"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/justkd/uid.manager"
+    "url": "https://github.com/justkd/UIDManager"
   },
   "main": "lib/index",
   "types": "lib/index",
@@ -23,9 +38,10 @@
   "scripts": {
     "test": "npx mocha --require mocha-dom",
     "watch": "npx mocha -w --require mocha-dom",
-    "build": "npm run build:lib && npm run build:docs",
+    "build": "npm run build:lib && npm run build:docs && npm run minify",
     "build:lib": "npx tsc -p .",
     "build:docs": "npx typedoc --out docs src/index.ts --cleanOutputDir",
+    "minify": "npx minify-all-js ./lib && npx minify-all-js ./docs",
     "publish": "npm publish"
   },
   "lint-staged": {
@@ -55,6 +71,7 @@
     "eslint-plugin-import": "^2.25.2",
     "jsdom": "^17.0.0",
     "lint-staged": "^13.2.3",
+    "minify-all-js": "^0.1.9",
     "mocha": "^10.2.0",
     "mocha-dom": "^1.0.0",
     "ts-node": "^10.9.1",
