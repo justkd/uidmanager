@@ -1,6 +1,6 @@
 /**
  * @file @justkd/uidmanager.ts
- * @version 1.1.0
+ * @version 1.1.1
  * @author Cadence Holmes
  * @copyright Cadence Holmes 2023
  * @license MIT

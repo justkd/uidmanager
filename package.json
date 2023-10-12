@@ -1,7 +1,7 @@
 {
   "name": "@justkd/uidmanager",
   "author": "Cadence Holmes, @justkd",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "description": "Generate RFC4122 version 4 compliant unique identifiers and associate them with entities in a `map`. Guarantees the generated identifier is unique compared to all other previously stored keys. Export and restore the map entities to facilitate persistence. Validates external UIDs for compliance and uniqueness.",
   "keywords": [
