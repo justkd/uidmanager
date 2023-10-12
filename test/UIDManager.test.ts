@@ -14,9 +14,17 @@ import { UIDManager } from "../src/UIDManager";
 
 const validHexNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const validHexLetters = ["a", "b", "c", "d", "e", "f"];
+
 const invalidHexLetters = ["x", "y", "z", "g", "h", "i"];
 const invalidHexSymbols = ["_", "+", ",", "&", "^", "%", "*", "#", "."];
 const invalidHexChars = [...invalidHexSymbols, ...invalidHexLetters];
+
+const _validKeysA = [{}, {}, { a: "A" }, { a: "A" }, [], [], [{}], [{}]];
+const _validKeysB = ["", "a", 0, 1, Infinity, true, false, Symbol(), Symbol()];
+const validKeys = [..._validKeysA, ..._validKeysB];
+
+const invalidKeys = [undefined, null, NaN];
+
 const validIds = [
   "ba7faa56-24a2-4098-9850-2cdb3d8e5e85",
   "295b66a6-830f-478c-aa02-932556f6aec4",
@@ -29,26 +37,6 @@ const validIds = [
   "71e037d4-eaa5-4db8-a532-6876c2daf24f",
   "bb08f784-1b07-4e21-9d82-3b7f937f015f",
 ];
-const validKeys = [
-  {},
-  {},
-  { a: "A" },
-  { a: "A" },
-  [],
-  [],
-  [{}],
-  [{}],
-  "",
-  "a",
-  0,
-  1,
-  Infinity,
-  true,
-  false,
-  Symbol(),
-  Symbol(),
-];
-const invalidKeys = [undefined, null, NaN];
 
 describe(`UIDManager.ts`, () => {
   it("should be immutable", () => {

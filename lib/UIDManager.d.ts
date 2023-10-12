@@ -41,11 +41,11 @@ export declare const UIDManager: () => {
      */
     validate: (uids: null | string | (string | null)[]) => string[] | null;
     /**
-     * Generate a unique identifier and associate it with the `target` entity.
-     * Internally, these associations are stored in a `new Map()`. The target entity
-     * is set as the key, and the UID string is set as the value. If the target entity
-     * already exists in the map, the existing association is deleted and a new UID is
-     * mapped to that entity.
+     * Generate a unique identifier and associate it with the provided key.
+     * Internally, these associations are stored in a `new Map()`. The target
+     * entity is set as the key, and the UID string is set as the value. If
+     * the target entity already exists in the map, the existing association
+     * is deleted and a new UID is mapped to that entity.
      * @param {any} key
      * `any` entity to be mapped to a unique identifier.
      * Throws if the key is `undefined`, `null`, or `NaN`.
@@ -59,7 +59,7 @@ export declare const UIDManager: () => {
      * @param {any} key
      * The entity reference.
      * @returns {string|undefined}
-     * Returns the UID `string` or `undefined` if a value is not found for the given key.
+     * Returns the UID `string` or `undefined` if a value is not found.
      */
     getUIDFor: (key: any) => string | undefined;
     /**
@@ -67,18 +67,19 @@ export declare const UIDManager: () => {
      * @param {string} uid
      * The UID string.
      * @returns {any}
-     * Returns the associated key or `undefined` if a matching value is not found.
-     * Returns `null` on error.
+     * Returns the associated key or `undefined` if a matching
+     * value is not found. Returns `null` on error.
      */
     getKeyFor: (uid: string) => any;
     /**
-     * Check if there is an existing UID for the target object.
-     * @param {any} key - The entity reference.
+     * Check if there is an existing UID for the target key.
+     * @param {any} key
+     * The entity reference.
      * @returns {boolean}
      */
     hasUIDFor: (key: any) => boolean;
     /**
-     * Check if there is an existing UID for the target object.
+     * Check if there is an existing key for the target UID.
      * @param {string} uid - The UID string.
      * @returns {boolean}
      */
@@ -137,7 +138,7 @@ export declare const UIDManager: () => {
      */
     deleteUID: (uid: string) => boolean | null;
     /**
-     * Delete a UID association for a given target.
+     * Delete a UID association for a given key.
      * @param {any} key
      * The key entity reference.
      * @returns {boolean|null}
@@ -155,4 +156,5 @@ export declare const UIDManager: () => {
      */
     getMap: () => Map<any, string>;
 };
+export type UIDManagerInterface = ReturnType<typeof UIDManager>;
 //# sourceMappingURL=UIDManager.d.ts.map
