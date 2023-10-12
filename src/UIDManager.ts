@@ -1,5 +1,5 @@
 /**
- * @file @justkd/UIDManager.ts
+ * @file @justkd/uidmanager.ts
  * @version 1.1.0
  * @author Cadence Holmes
  * @copyright Cadence Holmes 2023

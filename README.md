@@ -1,21 +1,21 @@
-# [@justkd/UIDManager](https://github.com/justkd/UIDManager)
+# [@justkd/uidmanager](https://github.com/justkd/uidmanager)
 
-![CircleCI](https://img.shields.io/circleci/build/gh/justkd/UIDManager/master?token=2edcfec5c13eaf6d951a8f2939b220cdca74644c&style=for-the-badge&logo=circleci)
+![CircleCI](https://img.shields.io/circleci/build/gh/justkd/uidmanager/master?token=2edcfec5c13eaf6d951a8f2939b220cdca74644c&style=for-the-badge&logo=circleci)
 
 ## Install
 
 ```
-npm i @justkd/UIDManager
+npm i @justkd/uidmanager
 ```
 ```
-yarn add @justkd/UIDManager
+yarn add @justkd/uidmanager
 ```
 
 ## Use
 
 ```
-import { UIDManager } from '@justkd/UIDManager'
-import type { UIDManagerInterface } from '@justkd/UIDManager'
+import { UIDManager } from '@justkd/uidmanager'
+import type { UIDManagerInterface } from '@justkd/uidmanager'
 
 const manager: UIDManagerInterface = UIDManager()
 const key = 'keys can be anything except null, undefined, or NaN'
