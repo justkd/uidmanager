@@ -1,6 +1,6 @@
 /**
- * @file @justkd/uidmanager.ts
- * @version 1.1.1
+ * @file UIDManager.ts
+ * @version 1.2.0
  * @author Cadence Holmes
  * @copyright Cadence Holmes 2023
  * @license MIT
@@ -12,7 +12,9 @@
 import { uid as UID } from "./uid";
 
 const onError = (name: string, e: unknown, msg?: string) => {
-  console.groupCollapsed(`UIDManager.${name}${msg ? ` : ${msg}` : ""}`);
+  const label = `UIDManager.${name}`;
+  const message = msg ? ` : ${msg}` : "";
+  console.groupCollapsed(`${label}${message}`);
   console.log(e);
   console.groupEnd();
 };
@@ -32,7 +34,7 @@ export const UIDManager = () => {
   const self = {
     /**
      * Validate strings as RFC4122 version 4 compliant unique identifiers.
-     * @param {string | string[]} uids
+     * @param {string|string[]} uids
      * Either a single string or array of strings to test.
      * @returns {string[]|null}
      * Returns `string[]` containing all valid strings.
@@ -82,8 +84,8 @@ export const UIDManager = () => {
         if (key === undefined) throw new Error("Keys must not be undefined.");
         if (key === null) throw new Error("Keys must not be null.");
         if (Number.isNaN(key)) throw new Error("Keys must not be NaN.");
-        const uid = generator.generate();
         if (map.has(key)) map.delete(key);
+        const uid = generator.generate();
         map.set(key, uid);
         return uid;
       } catch (e) {
@@ -99,7 +101,7 @@ export const UIDManager = () => {
      * @returns {string|undefined}
      * Returns the UID `string` or `undefined` if a value is not found.
      */
-    getUIDFor: (key: any): string | undefined => map.get(key) ?? null,
+    getUIDFor: (key: any): string | undefined => map.get(key),
 
     /**
      * Retrieve the key for the associated UID string.
@@ -111,7 +113,7 @@ export const UIDManager = () => {
      */
     getKeyFor: (uid: string): any => {
       try {
-        const entries = Array.from(map.entries());
+        const entries = [...map.entries()];
         const i = entries.findIndex((e) => uid === e[1]);
         if (i < 0) return undefined;
         return entries[i][0];
@@ -140,19 +142,19 @@ export const UIDManager = () => {
      * Retrieve a new array containing all keys held in the map.
      * @returns {any[]}
      */
-    keys: (): any[] => Array.from(map.keys()),
+    keys: (): any[] => [...map.keys()],
 
     /**
      * Retrieve a new array containing all values (uids) held in the map.
      * @returns {string[]}
      */
-    uids: (): string[] => Array.from(map.values()),
+    uids: (): string[] => [...map.values()],
 
     /**
      * Retrieve a new array containing [key, value] arrays for each entry.
      * @returns {[any, string][]}
      */
-    entries: (): [any, string][] => Array.from(map.entries()),
+    entries: (): [any, string][] => [...map.entries()],
 
     /**
      * Replace the current map with a new set of entries.
@@ -170,7 +172,7 @@ export const UIDManager = () => {
     restore: (entries: [any, string][]): boolean | null => {
       try {
         const $entries = entries.map(([k, v]) => [k, v.toLowerCase()]);
-        const bank: string[] = [];
+        const bank = [] as string[];
         const validated = $entries.every(([k, v], i) => {
           if (bank.includes(v)) {
             const err = `Invalid entry [${k}, ${v}] at index ${i}`;
@@ -184,7 +186,8 @@ export const UIDManager = () => {
             onError("restore", new Error(err), defaultMsg);
             return false;
           }
-          if (k === undefined || k === null || Number.isNaN(k)) {
+          const invalidKey = k === undefined || k === null || Number.isNaN(k);
+          if (invalidKey) {
             const err = `Invalid entry [${k}, ${v}] at index ${i}`;
             const msg = "Keys must not be null, undefined, or NaN.";
             onError("restore", new Error(err), msg);
@@ -225,16 +228,19 @@ export const UIDManager = () => {
           onError("set", new Error(err), defaultMsg);
           return false;
         }
-        if (k === undefined || k === null || Number.isNaN(k)) {
+        const invalidKey = k === undefined || k === null || Number.isNaN(k);
+        if (invalidKey) {
           const err = `Invalid entry [${k}, ${v}]`;
           const msg = "Keys must not be null, undefined, or NaN.";
           onError("set", new Error(err), msg);
           return false;
         }
-        if (
-          [...map.values()].includes(v) ||
-          generator.getExisting().includes(v)
-        ) {
+        const invalidEntry = (() => {
+          const values = [...map.values()];
+          const { getExisting } = generator;
+          return values.includes(v) || getExisting().includes(v);
+        })();
+        if (invalidEntry) {
           const err = `Invalid entry [${k}, ${v}]`;
           const msg = "UID already exists.";
           onError("set", new Error(err), msg);
@@ -259,12 +265,11 @@ export const UIDManager = () => {
      */
     deleteUID: (uid: string): boolean | null => {
       try {
-        const entries = Array.from(map.entries());
+        const entries = [...map.entries()];
         const i = entries.findIndex((e) => uid === e[1]);
         if (i < 0) return false;
         const k = entries[i][0];
-        map.delete(k);
-        return true;
+        return map.delete(k);
       } catch (e) {
         onError("deleteUID", e);
         return null;
@@ -281,9 +286,7 @@ export const UIDManager = () => {
      */
     deleteUIDFor: (key: any): boolean | null => {
       try {
-        if (!map.has(key)) return false;
-        map.delete(key);
-        return true;
+        return map.has(key) && map.delete(key);
       } catch (e) {
         onError("deleteUIDFor", e);
         return null;
@@ -302,9 +305,7 @@ export const UIDManager = () => {
     getMap: (): Map<any, string> => map,
   };
 
-  Object.freeze(self);
-
-  return self;
+  return Object.freeze(self);
 };
 
 export type UIDManagerInterface = ReturnType<typeof UIDManager>;
