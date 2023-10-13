@@ -1,5 +1,5 @@
 /**
- * @file @justkd/uid.ts
+ * @file uid.ts
  * @version 1.1.1
  * @author Cadence Holmes
  * @copyright Cadence Holmes 2023
@@ -37,7 +37,7 @@ export declare const uid: (uids?: string[]) => {
     generate: () => string;
     /**
      * Retrieve the array of previously generated UIDs.
-     * @return {string[]}
+     * @returns {string[]}
      */
     getExisting: () => string[];
     /**

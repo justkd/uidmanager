@@ -1,6 +1,6 @@
 /**
- * @file @justkd/uidmanager.ts
- * @version 1.1.1
+ * @file UIDManager.ts
+ * @version 1.2.0
  * @author Cadence Holmes
  * @copyright Cadence Holmes 2023
  * @license MIT
@@ -13,10 +13,10 @@
  * and associate them with entities in a `map`.
  * @returns
  */
-export declare const UIDManager: () => {
+export declare const UIDManager: () => Readonly<{
     /**
      * Validate strings as RFC4122 version 4 compliant unique identifiers.
-     * @param {string | string[]} uids
+     * @param {string|string[]} uids
      * Either a single string or array of strings to test.
      * @returns {string[]|null}
      * Returns `string[]` containing all valid strings.
@@ -155,6 +155,6 @@ export declare const UIDManager: () => {
      * @returns {Map<any, string>}
      */
     getMap: () => Map<any, string>;
-};
+}>;
 export type UIDManagerInterface = ReturnType<typeof UIDManager>;
 //# sourceMappingURL=UIDManager.d.ts.map
