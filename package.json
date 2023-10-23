@@ -1,7 +1,7 @@
 {
   "name": "@justkd/uidmanager",
   "author": "Cadence Holmes, @justkd",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "description": "Generate RFC4122 version 4 compliant unique identifiers and associate them with entities in a `map`. Guarantees the generated identifier is unique compared to all other previously stored keys. Export and restore the map entities to facilitate persistence. Validates external UIDs for compliance and uniqueness.",
   "keywords": [
@@ -27,42 +27,21 @@
     "type": "git",
     "url": "https://github.com/justkd/uidmanager"
   },
-  "main": "lib/index",
-  "types": "lib/index",
-  "files": [
-    "lib",
-    "LICENSE",
-    "README.md",
-    "package.json"
-  ],
   "scripts": {
     "test": "npx mocha --require mocha-dom",
     "watch": "npx mocha -w --require mocha-dom",
     "build": "npm run build:lib && npm run build:docs && npm run minify",
-    "build:lib": "npx tsc -p .",
-    "build:docs": "npx typedoc --out docs src/index.ts --cleanOutputDir",
-    "minify": "npx minify-all-js ./lib && npx minify-all-js ./docs",
-    "publish": "npm publish",
-    "publish-public": "npm publish --access public"
+    "build:lib": "rm ./publish/lib -d -r -f && npx tsc && cp README.md publish && cp LICENSE publish",
+    "build:docs": "rm ./docs -d -r && npx typedoc --out docs src/index.ts --cleanOutputDir",
+    "minify": "npx minify-all-js ./publish && npx minify-all-js ./docs",
+    "publish:private": "cd publish && npm run publish",
+    "publish:public": "cd publish && npm run publish:public"
   },
-  "lint-staged": {
-    "*.ts": [
-      "eslint --cache --fix"
-    ]
-  },
-  "mocha": {
-    "extension": [
-      "ts"
-    ],
-    "watch-files": [
-      "src/**/*.ts",
-      "test/**/*.ts"
-    ],
-    "require": "ts-node/register"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/chai": "4.3.5",
     "@types/mocha": "10.0.1",
+    "@types/node": "20.8.5",
     "@typescript-eslint/eslint-plugin": "5.61.0",
     "@typescript-eslint/parser": "5.61.0",
     "chai": "4.3.7",
@@ -79,5 +58,20 @@
     "typedoc": "0.24.8",
     "typedoc-plugin-markdown": "3.15.3",
     "typescript": "5.1.6"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --cache --fix"
+    ]
+  },
+  "mocha": {
+    "extension": [
+      "ts"
+    ],
+    "watch-files": [
+      "src/**/*.ts",
+      "test/**/*.ts"
+    ],
+    "require": "ts-node/register"
   }
 }

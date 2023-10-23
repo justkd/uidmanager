@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.UIDManager=void 0;var UIDManager_1=require("./lib/UIDManager");Object.defineProperty(exports,"UIDManager",{enumerable:!0,get:function(){return UIDManager_1.UIDManager}});
