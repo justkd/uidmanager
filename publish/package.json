@@ -1,0 +1,46 @@
+{
+  "name": "@justkd/uidmanager",
+  "author": "Cadence Holmes, @justkd",
+  "version": "1.2.1",
+  "license": "MIT",
+  "description": "Generate RFC4122 version 4 compliant unique identifiers and associate them with entities in a `map`. Guarantees the generated identifier is unique compared to all other previously stored keys. Export and restore the map entities to facilitate persistence. Validates external UIDs for compliance and uniqueness.",
+  "keywords": [
+    "id",
+    "uid",
+    "uuid",
+    "unique",
+    "identifier",
+    "manage",
+    "manager",
+    "storage",
+    "validator",
+    "validate",
+    "validation",
+    "generate",
+    "generator",
+    "map",
+    "mapper",
+    "mapped",
+    "npm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/justkd/uidmanager"
+  },
+  "scripts": {
+    "publish": "npm publish",
+    "publish:private": "npm publish",
+    "publish:public": "npm publish --access public"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "files": [
+    "lib",
+    "index.d.ts",
+    "index.d.ts.map",
+    "index.js",
+    "index.js.map",
+    "README.md",
+    "LICENSE"
+  ]
+}

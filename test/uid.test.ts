@@ -10,7 +10,7 @@
 
 import { describe, it } from "mocha";
 import { expect } from "chai";
-import { uid } from "../src/uid";
+import { uid } from "../src/lib/uid";
 
 /**
  * Use long form logic to check that a string is a RFC 4122 Version 4 unique identifier.

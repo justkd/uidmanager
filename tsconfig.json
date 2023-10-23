@@ -4,7 +4,7 @@
     "module": "commonjs",
     "declaration": true,
     "declarationMap": true,
-    "outDir": "lib",
+    "outDir": "publish",
     "sourceMap": true,
     "strict": true,
     "allowJs": true,
@@ -14,8 +14,9 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "skipLibCheck": false
+    "skipLibCheck": false,
+    "types": ["node"]
   },
-  "include": ["src", "utils"],
-  "exclude": ["node_modules", "lib", "docs", "test"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "lib", "docs", "test"]
 }
